@@ -7,7 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["Gateway.csproj", ""]
+COPY ["./Gateway.csproj", ""]
 RUN dotnet restore "Gateway.csproj"
 COPY . .
 WORKDIR "/src"
