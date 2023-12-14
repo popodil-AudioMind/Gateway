@@ -11,17 +11,24 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
-
-      - name: Login to GitHub Container Registry
+      
+      - name: Log in to Docker Hub
         uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
         with:
-          username: ${{ secrets.CI_REGISTRY_USER }}
-          password: ${{ secrets.CI_REGISTRY_PASSWORD }}
-
-      - name: Build and push
+          username: ${{ secrets.CI_REGISTRY_USER  }}
+          password: ${{ secrets.CI_REGISTRY_PASSWORD  }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: ${{ secrets.CI_REGISTRY_USER  }}/audiomind-gateway:latest
+      
+      - name: Build and push Docker image
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
-          file: ./Gateway/Dockerfile
+          file: ./Dockerfile
           push: true
-          tags: ${{ secrets.CI_REGISTRY_USER }}/audiomind-gateway:latest
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
