@@ -1,0 +1,25 @@
+﻿{
+  "Routes": [
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/{everything}",
+      "UpstreamPathTemplate": "/userservice/{everything}",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://gateway:8000",
+    "ReRoutesCaseSensitive": false,
+    "ServiceDiscoveryProvider": {
+      "Type": "Eureka"
+    },
+    "LoadBalancerOptions": {
+      "Type": "LeastConnection",
+      "Key": null,
+      "Expiry": 0
+    }
+  }
+}
