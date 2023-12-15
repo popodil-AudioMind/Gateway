@@ -25,7 +25,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v5
         with:
-          context: .
-          file: ./Gateway/Dockerfile
+          context: ./Gateway
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.CI_REGISTRY_USER }}/audiomind-gateway:latest
