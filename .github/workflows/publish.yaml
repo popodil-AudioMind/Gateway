@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./Gateway
-          file: ./Dockerfile
+          file: ./Gateway/Dockerfile
           push: true
           tags: ${{ secrets.CI_REGISTRY_USER }}/audiomind-gateway:latest
