@@ -8,7 +8,7 @@ ENV ASPNETCORE_URLS=http://+:80
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release
 WORKDIR /src
-COPY ["Gateway.csproj", "./"]
+COPY ["./Gateway.csproj", "./"]
 RUN dotnet restore "Gateway.csproj"
 COPY . .
 WORKDIR "/src/."
