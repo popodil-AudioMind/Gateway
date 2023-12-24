@@ -2,7 +2,7 @@ name: Snyk
 on:
   push:
     branches:
-      - main
+      - '!main'   # excludes main
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
@@ -11,6 +11,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - name: Setup .NET
+        uses: actions/setup-dotnet@3.0.3
+      - name: Restore dependencies
+        run: dotnet restore ./Gateway.sln
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
         env:
