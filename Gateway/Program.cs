@@ -1,4 +1,4 @@
-var builder = WebApplication.CreateBuilder(args);
+/*var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
@@ -23,3 +23,38 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+*/
+
+using Steeltoe.Discovery.Client;
+
+namespace Gateway
+{
+    public static class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args)
+                .AddDiscoveryClient()
+                .Build()
+                .Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder
+                    .UseContentRoot(Directory.GetCurrentDirectory())
+                    .ConfigureAppConfiguration((hostingContext, _config) =>
+                    {
+                        _config
+                        .SetBasePath(Directory.GetCurrentDirectory())
+                        .AddJsonFile("appsettings.json", true, true)
+                        .AddJsonFile($"appsettings.{hostingContext.HostingEnvironment.EnvironmentName}.json", true, true)
+                        .AddJsonFile("ocelot.json")
+                        .AddEnvironmentVariables();
+                    });
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
+}

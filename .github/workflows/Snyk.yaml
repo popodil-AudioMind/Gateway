@@ -1,0 +1,23 @@
+name: Snyk
+on:
+  push:
+    branches:
+      - '!main'   # excludes main
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  security:
+    name: Analyze security
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+      - name: Restore dependencies
+        run: dotnet restore ./Gateway.sln
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/dotnet@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          command: monitor
