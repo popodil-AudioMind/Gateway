@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Setup .NET
-        uses: actions/setup-dotnet@4.0.0
+        uses: actions/setup-dotnet@v3
       - name: Restore dependencies
         run: dotnet restore ./Gateway.sln
       - name: Run Snyk to check for vulnerabilities
