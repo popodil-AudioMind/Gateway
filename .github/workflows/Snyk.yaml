@@ -12,12 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@master
       - name: Restore dependencies
-        run: dotnet restore ./Gateway/Gateway.csproj
+        run: dotnet restore ./Gateway.sln
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/dotnet@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        with:
-          command: monitor
