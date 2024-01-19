@@ -1,20 +1,27 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
-
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+ENV ASPNETCORE_URLS=http://+:80
+ENV AllowedHosts=*
+ENV eureka__client__serviceUrl=http://eureka:8761/eureka
+ENV eureka__client__shouldRegisterWithEureka=true
+ENV eureka__client__shouldFetchRegistry=true
+ENV JWTSecurityKey=ThePerfectAudiomindSecurityKeyForJWT
+
+FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
+ARG configuration=Release
 WORKDIR /src
-COPY ["Gateway/Gateway.csproj", "Gateway/"]
-RUN dotnet restore "Gateway/Gateway.csproj"
+COPY ["./Gateway.csproj", "./"]
+RUN dotnet restore "Gateway.csproj"
 COPY . .
-WORKDIR "/src/Gateway"
-RUN dotnet build "Gateway.csproj" -c Release -o /app/build
+WORKDIR "/src/."
+RUN dotnet build "Gateway.csproj" -c $configuration -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Gateway.csproj" -c Release -o /app/publish /p:UseAppHost=false
+ARG configuration=Release
+RUN dotnet publish "Gateway.csproj" -c $configuration -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
