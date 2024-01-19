@@ -6,6 +6,7 @@ using Ocelot.Middleware;
 using Ocelot.Provider.Eureka;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
+using System.Diagnostics;
 using System.Text;
 
 namespace Gateway
@@ -48,7 +49,11 @@ namespace Gateway
             services.AddDiscoveryClient();
             services.AddServiceDiscovery(options => options.UseEureka());
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            services.AddAuthentication(authentication =>
+            {
+                authentication.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authentication.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
                 .AddJwtBearer(options =>
                 {
                     options.TokenValidationParameters = new TokenValidationParameters
@@ -62,6 +67,7 @@ namespace Gateway
                     };
                 });
             services.AddAuthorization();
+            Trace.WriteLine(Configuration.GetValue<string>("JWTSecurityKey"));
 
             //string connectionstring;
             //if (_env.IsDevelopment()) connectionstring = Configuration.GetConnectionString("DevConnection");

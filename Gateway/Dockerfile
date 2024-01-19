@@ -4,6 +4,11 @@ EXPOSE 80
 EXPOSE 443
 
 ENV ASPNETCORE_URLS=http://+:80
+ENV AllowedHosts=*
+ENV eureka__client__serviceUrl=http://eureka:8761/eureka
+ENV eureka__client__shouldRegisterWithEureka=true
+ENV eureka__client__shouldFetchRegistry=true
+ENV JWTSecurityKey=ThePerfectAudiomindSecurityKeyForJWT
 
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 ARG configuration=Release

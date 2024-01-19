@@ -19,9 +19,6 @@
       },
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "role": "administrator"
       }
     },
     {
@@ -46,9 +43,6 @@
       },
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "role": "administrator"
       }
     },
     {
@@ -73,9 +67,6 @@
       },
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "role": "administrator"
       }
     },
     {
@@ -127,9 +118,6 @@
       },
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "Bearer"
-      },
-      "RouteClaimsRequirement": {
-        "role": "administrator"
       }
     },
     {
