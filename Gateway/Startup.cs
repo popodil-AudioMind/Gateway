@@ -4,6 +4,7 @@ using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Eureka;
+using Prometheus;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
 using System.Diagnostics;
@@ -85,6 +86,7 @@ namespace Gateway
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "RestAPI v1"));
 
             app.UseRouting();
+            app.UseHttpMetrics();
 
             app.UseCors();
 
@@ -98,6 +100,7 @@ namespace Gateway
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapMetrics();
             });
         }
     }
