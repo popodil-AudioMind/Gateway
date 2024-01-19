@@ -1,9 +1,12 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using Ocelot.Provider.Eureka;
 using Steeltoe.Discovery.Client;
 using Steeltoe.Discovery.Eureka;
+using System.Text;
 
 namespace Gateway
 {
@@ -45,6 +48,20 @@ namespace Gateway
             services.AddDiscoveryClient();
             services.AddServiceDiscovery(options => options.UseEureka());
 
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        ValidIssuer = null,
+                        ValidAudience = null,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration.GetValue<string>("JWTSecurityKey")))
+                    };
+                });
+            services.AddAuthorization();
 
             //string connectionstring;
             //if (_env.IsDevelopment()) connectionstring = Configuration.GetConnectionString("DevConnection");

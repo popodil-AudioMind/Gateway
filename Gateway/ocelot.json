@@ -2,11 +2,212 @@
   "Routes": [
     {
       "ServiceName": "userservice",
-      "DownstreamPathTemplate": "/{everything}",
-      "UpstreamPathTemplate": "/userservice/{everything}",
+      "DownstreamPathTemplate": "/health",
+      "UpstreamPathTemplate": "/user/healthcheck",
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/api/user",
+      "UpstreamPathTemplate": "/user/api/user",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "role": "administrator"
+      }
+    },
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/api/user/",
+      "UpstreamPathTemplate": "/user/api/user/",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/api/user/all",
+      "UpstreamPathTemplate": "/user/api/user/all",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "role": "administrator"
+      }
+    },
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/api/user",
+      "UpstreamPathTemplate": "/user/api/user",
+      "UpstreamHttpMethod": [ "PATCH" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "userservice",
+      "DownstreamPathTemplate": "/api/user/",
+      "UpstreamPathTemplate": "/user/api/user/",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "role": "administrator"
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/health",
+      "UpstreamPathTemplate": "/auth/healthcheck",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login",
+      "UpstreamPathTemplate": "/auth/api/login",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login/create",
+      "UpstreamPathTemplate": "/auth/api/login/create",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login/",
+      "UpstreamPathTemplate": "/auth/api/login/",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login/all",
+      "UpstreamPathTemplate": "/auth/api/login/all",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      },
+      "RouteClaimsRequirement": {
+        "role": "administrator"
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login",
+      "UpstreamPathTemplate": "/auth/api/login",
+      "UpstreamHttpMethod": [ "PATCH" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "authservice",
+      "DownstreamPathTemplate": "/api/login/",
+      "UpstreamPathTemplate": "/auth/api/login/",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "forumservice",
+      "DownstreamPathTemplate": "/api/forum",
+      "UpstreamPathTemplate": "/forum/api/forum",
+      "UpstreamHttpMethod": [ "POST" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "forumservice",
+      "DownstreamPathTemplate": "/api/forum/",
+      "UpstreamPathTemplate": "/forum/api/forum/",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "forumservice",
+      "DownstreamPathTemplate": "/api/forum/all",
+      "UpstreamPathTemplate": "/forum/api/forum/all",
+      "UpstreamHttpMethod": [ "GET" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      }
+    },
+    {
+      "ServiceName": "forumservice",
+      "DownstreamPathTemplate": "/api/forum",
+      "UpstreamPathTemplate": "/forum/api/forum",
+      "UpstreamHttpMethod": [ "PATCH" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
+      }
+    },
+    {
+      "ServiceName": "forumservice",
+      "DownstreamPathTemplate": "/api/forum/",
+      "UpstreamPathTemplate": "/forum/api/forum/",
+      "UpstreamHttpMethod": [ "DELETE" ],
+      "FileCacheOptions": {
+        "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     }
   ],
