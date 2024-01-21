@@ -16,6 +16,9 @@
       "UpstreamHttpMethod": [ "POST" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -25,6 +28,9 @@
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -34,6 +40,9 @@
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -43,6 +52,9 @@
       "UpstreamHttpMethod": [ "PATCH" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -52,6 +64,9 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -88,6 +103,9 @@
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -97,6 +115,9 @@
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -106,6 +127,9 @@
       "UpstreamHttpMethod": [ "PATCH" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -115,6 +139,9 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -124,6 +151,9 @@
       "UpstreamHttpMethod": [ "POST" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -151,6 +181,9 @@
       "UpstreamHttpMethod": [ "PATCH" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     },
     {
@@ -160,6 +193,9 @@
       "UpstreamHttpMethod": [ "DELETE" ],
       "FileCacheOptions": {
         "TtlSeconds": 15
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer"
       }
     }
   ],
