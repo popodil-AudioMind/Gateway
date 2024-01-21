@@ -2,7 +2,7 @@
   "Routes": [
     {
       "ServiceName": "userservice",
-      "DownstreamPathTemplate": "/health",
+      "DownstreamPathTemplate": "/healthcheck",
       "UpstreamPathTemplate": "/user/healthcheck",
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
@@ -71,7 +71,7 @@
     },
     {
       "ServiceName": "authservice",
-      "DownstreamPathTemplate": "/health",
+      "DownstreamPathTemplate": "/healthcheck",
       "UpstreamPathTemplate": "/auth/healthcheck",
       "UpstreamHttpMethod": [ "GET" ],
       "FileCacheOptions": {
